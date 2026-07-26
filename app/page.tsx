@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Check, FileText, MessageCircle, Scale } from "lucide-react";
+import { ArrowRight, Check, FileText, MessageCircle, Scale, Star } from "lucide-react";
 
 export const metadata = {
   title: "Make Your Brand Business Service LLC Customer Experience",
@@ -8,6 +8,16 @@ export const metadata = {
 
 export default function Home() {
   return <>
+    <section className="customer-rating" aria-label="Customer rating: 1 out of 5 stars">
+      <div className="review-wrap">
+        <div className="rating-stars" aria-hidden="true">
+          <Star className="rated-star"/>
+          <Star/><Star/><Star/><Star/>
+        </div>
+        <strong>1 out of 5</strong>
+        <span>Rating given by the customer in this featured account — not an aggregate score.</span>
+      </div>
+    </section>
     <section className="review-hero">
       <div className="review-wrap">
         <div className="review-intro">
