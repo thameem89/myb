@@ -22,7 +22,7 @@ export default function Home() {
       <div className="review-wrap">
         <div className="review-intro">
           <span className="eyebrow">One customer’s firsthand account</span>
-          <h1>My experience with Make Your Brand Business Service LLC</h1>
+          <h1>My experience with <span className="company-name">Make Your Brand Business Service LLC</span></h1>
           <p className="review-lead">The customer says the process began with the hope of setting up a business confidently, but later became a stressful disagreement about payment timing, communication and a requested refund breakdown.</p>
           <p className="attribution">This is the customer’s personal account. Disputed points are attributed, and the company is invited to respond.</p>
           <div className="actions">
