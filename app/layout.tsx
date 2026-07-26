@@ -8,10 +8,10 @@ const serif = Source_Serif_4({ variable: "--font-serif", subsets: ["latin"], dis
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://clearterms.example"),
-  title: { default: "Clear Terms | Independent Customer Experiences", template: "%s | Clear Terms" },
-  description: "Independent customer experiences and practical business setup awareness for entrepreneurs in the UAE.",
-  openGraph: { title: "Clear Terms", description: "Read documented experiences. Understand common risks. Decide with clearer terms.", type: "website", images: [{ url: "/og.png", width: 1200, height: 630, alt: "Clear Terms — Know the full story before you choose." }] },
-  twitter: { card: "summary_large_image", title: "Clear Terms", description: "Independent customer experiences and business setup awareness.", images: ["/og.png"] },
+  title: { default: "Make Your Brand Business Service LLC Customer Experience | Clear Terms", template: "%s | Clear Terms" },
+  description: "A personal, carefully attributed customer experience involving Make Your Brand Business Service LLC, with payments, timeline and right of response.",
+  openGraph: { title: "A Customer Experience Worth Reading | Clear Terms", description: "Payments, communication and a fair right of response.", type: "website", images: [{ url: "/og-review.png", width: 1200, height: 630, alt: "Clear Terms — A customer experience worth reading." }] },
+  twitter: { card: "summary_large_image", title: "A Customer Experience Worth Reading | Clear Terms", description: "Payments, communication and a fair right of response.", images: ["/og-review.png"] },
   robots: { index: true, follow: true },
   icons: { icon: "/favicon.svg" },
 };
