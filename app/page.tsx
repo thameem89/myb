@@ -14,8 +14,6 @@ export default function Home() {
           <Star className="rated-star"/>
           <Star/><Star/><Star/><Star/>
         </div>
-        <strong>1 out of 5</strong>
-        <span>Rating given by the customer in this featured account — not an aggregate score.</span>
       </div>
     </section>
     <section className="review-hero">
