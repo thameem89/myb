@@ -1,0 +1,4 @@
+import Link from "next/link"; import { PageHero } from "@/components/site-shell"; import { guides } from "@/lib/content";
+export const metadata={title:"Business Setup Awareness Guides"};
+const slug=(v:string)=>v.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
+export default function Page(){return <><PageHero eyebrow="Independent practical resources" title="Questions worth asking before you commit." intro="General educational information for entrepreneurs comparing consultants, contracts and payment arrangements."/><section className="content-section"><div className="container guide-grid">{guides.map(([t,c,r],i)=><Link href={`/guides/${slug(t)}`} className="guide-card" key={t}><span className="guide-number">0{i+1}</span><span className="eyebrow">{c}</span><h3>{t}</h3><span>{r} read</span></Link>)}</div></section></>}
