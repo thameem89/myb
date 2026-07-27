@@ -1,115 +1,98 @@
-import Link from "next/link";
-import { ArrowRight, Check, FileText, MessageCircle, Scale, Star } from "lucide-react";
+import { Check, FileText, ShieldCheck, Star } from "lucide-react";
+import { SubmissionForm } from "@/components/submission-form";
 
 export const metadata = {
-  title: "Make Your Brand Business Service LLC Customer Experience",
-  description: "Read a carefully attributed customer experience involving Make Your Brand Business Service LLC, including payments, communication concerns and the company’s right of response.",
+  title: "My Experience with Make Your Brand Business Service LLC",
+  description: "One customer’s personal account of payments, communication and unresolved questions during a business setup service.",
 };
+
+const steps = [
+  ["I agreed to start", "The total discussed for the service was AED 12,000."],
+  ["I made an initial payment", "I paid AED 5,700 and the business setup process began."],
+  ["A balance remained", "AED 6,300 remained. I recall verbally agreeing that I would have two months to pay it."],
+  ["The timing became disputed", "I say payment was requested sooner than I expected, while the company states that its payment terms were communicated."],
+  ["Further action became a concern", "Written communication referred to license cancellation or amendment. I say other action was not clearly explained to me beforehand in writing."],
+  ["I asked for clarity", "I say I did not receive a refund or a detailed breakdown explaining any deductions."],
+] as const;
 
 export default function Home() {
   return <>
-    <section className="customer-rating" aria-label="Customer rating: 1 out of 5 stars">
-      <div className="review-wrap">
-        <div className="rating-stars" aria-hidden="true">
-          <Star className="rated-star"/>
-          <Star/><Star/><Star/><Star/>
-        </div>
+    <section className="customer-rating" aria-label="My rating: 1 out of 5 stars">
+      <div className="one-page-wrap">
+        <div className="rating-stars" aria-hidden="true"><Star className="rated-star"/><Star/><Star/><Star/><Star/></div>
       </div>
     </section>
-    <section className="review-hero">
-      <div className="review-wrap">
-        <div className="review-intro">
-          <span className="eyebrow">One customer’s firsthand account</span>
+
+    <section className="personal-hero">
+      <div className="one-page-wrap personal-hero-grid">
+        <div>
+          <span className="eyebrow">My personal experience</span>
           <h1>My experience with <span className="company-name">Make Your Brand Business Service LLC</span></h1>
-          <p className="review-lead">The customer says the process began with the hope of setting up a business confidently, but later became a stressful disagreement about payment timing, communication and a requested refund breakdown.</p>
-          <p className="attribution">This is the customer’s personal account. Disputed points are attributed, and the company is invited to respond.</p>
-          <div className="actions">
-            <Link className="button" href="#customer-story">Read the customer story <ArrowRight size={17}/></Link>
-            <Link className="simple-link" href="/timeline">See the timeline</Link>
-          </div>
+          <p className="personal-lead">I started this process hoping to set up my business with confidence. It later became a stressful disagreement about payment timing, communication and what would happen next.</p>
+          <a className="button" href="#my-story">Read what happened</a>
         </div>
-
-        <aside className="review-summary" aria-label="Experience summary">
-          <div className="summary-heading">
-            <span>Experience summary</span>
-            <span className="pill amber">Customer account</span>
-          </div>
+        <aside className="simple-facts" aria-label="Key payment details">
+          <span className="eyebrow">The key numbers</span>
           <dl>
-            <div><dt>Discussed service total</dt><dd>AED 12,000</dd></div>
-            <div><dt>Initial amount paid</dt><dd>AED 5,700</dd></div>
+            <div><dt>Total discussed</dt><dd>AED 12,000</dd></div>
+            <div><dt>Amount I paid</dt><dd>AED 5,700</dd></div>
             <div><dt>Balance discussed</dt><dd>AED 6,300</dd></div>
-            <div><dt>Repayment period recalled</dt><dd>Two months, verbal</dd></div>
+            <div><dt>Payment period I recall</dt><dd>Two months, verbal</dd></div>
           </dl>
-          <p>The customer states that no refund or detailed deduction breakdown was received. The company’s position is shown below.</p>
         </aside>
       </div>
     </section>
 
-    <section className="review-nav" aria-label="On this page">
-      <div className="review-wrap">
-        <span>On this page</span>
-        <a href="#customer-story">What happened</a>
-        <a href="#disagreement">Where the parties disagree</a>
-        <a href="#what-to-learn">What customers can learn</a>
+    <section className="plain-note">
+      <div className="one-page-wrap"><ShieldCheck/><p>This page shares my personal account. Where the company has a different position, I say so clearly. Readers should review available records and reach their own conclusions.</p></div>
+    </section>
+
+    <section className="personal-section" id="my-story">
+      <div className="one-page-wrap narrow-story">
+        <span className="eyebrow">What happened</span>
+        <h2>My experience, step by step</h2>
+        <p className="section-intro">I have kept this simple so that anyone considering a business setup consultant can understand the main points.</p>
+        <ol className="simple-steps">
+          {steps.map(([title,text], index) => <li key={title}><span>{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}
+        </ol>
       </div>
     </section>
 
-    <section className="story-section" id="customer-story">
-      <div className="story-layout">
-        <aside>
-          <span className="eyebrow">The customer’s story</span>
-          <h2>A process that began with hope and, according to the customer, ended in uncertainty.</h2>
-        </aside>
-        <div className="story-copy">
-          <p className="drop-cap">According to the customer, the business setup process began after an initial payment of AED 5,700 against a discussed total of AED 12,000. The customer recalls personally agreeing to have two months to pay the remaining AED 6,300.</p>
-          <p>The customer states that payment was requested sooner than expected. What followed became the central concern: written communication referred to license cancellation or amendment, while the customer says further action occurred without clear prior written notice.</p>
-          <div className="story-emotion"><strong>The personal impact described</strong><p>The account centres on uncertainty: what the verbal payment understanding meant, what action could follow, and how any refund or deductions would be calculated. These are summaries of the customer’s stated concerns, not direct quotations.</p></div>
-          <p>The customer states that a refund or a detailed explanation of deductions was expected but was not received. No private evidence is published until it has been reviewed and safely redacted.</p>
-          <div className="record-note"><FileText size={19}/><div><strong>Evidence is handled carefully</strong><span>Documents are labelled by source and verification status. Private originals are never public.</span></div></div>
+    <section className="personal-section soft-section" id="why-it-mattered">
+      <div className="one-page-wrap two-simple-columns">
+        <div><span className="eyebrow">Why this mattered to me</span><h2>The hardest part was the uncertainty.</h2></div>
+        <div className="large-copy"><p>My concern was not only the money. It was not knowing exactly what the verbal payment understanding meant, what action could follow, and how any refund or deductions would be calculated.</p><p>This is a summary of the concerns in my account, not a direct quotation from a document.</p></div>
+      </div>
+    </section>
+
+    <section className="personal-section" id="both-sides">
+      <div className="one-page-wrap">
+        <div className="simple-section-heading"><span className="eyebrow">A fair view</span><h2>Where our positions differ</h2></div>
+        <div className="simple-comparison">
+          <article><h3>My position</h3><ul><li>I understood that I had two months to pay the balance.</li><li>I say payment was requested sooner than expected.</li><li>I say later action was not clearly communicated beforehand in writing.</li><li>I say I did not receive a refund or detailed deduction breakdown.</li></ul></article>
+          <article><h3>The company’s stated position</h3><ul><li>Payment terms were communicated.</li><li>The consequences of non-payment were communicated.</li><li>Action was taken according to the agreed process.</li><li>The company says it operates transparently and follows applicable procedures.</li></ul></article>
         </div>
+        <p className="fairness-line">This website does not determine legal liability. The company may submit a correction, clarification or response, which will be displayed fairly.</p>
       </div>
     </section>
 
-    <section className="disagreement-section" id="disagreement">
-      <div className="review-wrap">
-        <div className="simple-heading"><span className="eyebrow">A fair view of both sides</span><h2>Where the parties appear to disagree</h2><p>This platform does not decide legal liability. It helps readers understand each stated position.</p></div>
-        <div className="two-voices">
-          <article>
-            <span className="voice-icon"><MessageCircle/></span>
-            <span className="eyebrow">The customer states</span>
-            <ul>
-              <li>A two-month payment period was verbally agreed.</li>
-              <li>Payment was requested sooner than expected.</li>
-              <li>Not every later action was clearly communicated in writing.</li>
-              <li>A refund or detailed deduction breakdown was not received.</li>
-            </ul>
-          </article>
-          <article>
-            <span className="voice-icon"><Scale/></span>
-            <span className="eyebrow">The company’s stated position</span>
-            <ul>
-              <li>Payment terms were communicated.</li>
-              <li>Consequences of non-payment were communicated.</li>
-              <li>Action was taken according to the agreed process.</li>
-              <li>The company says it operates transparently and follows applicable procedures.</li>
-            </ul>
-          </article>
-        </div>
-        <div className="response-invite"><p><strong>Make Your Brand Business Service LLC may respond.</strong> A verified response, correction or clarification will be displayed fairly and prominently.</p><Link href="/company-response">Submit a company response <ArrowRight size={16}/></Link></div>
+    <section className="personal-section soft-section" id="lessons">
+      <div className="one-page-wrap two-simple-columns">
+        <div><span className="eyebrow">What I learned</span><h2>Five things I would ask for in writing.</h2></div>
+        <ul className="personal-lessons">
+          {["The complete payment schedule and every extension.","What happens if any payment is delayed.","The refund policy and every possible deduction.","Who can submit, change or cancel an application.","Copies of every receipt, agreement and official communication."].map(item=><li key={item}><Check/>{item}</li>)}
+        </ul>
       </div>
     </section>
 
-    <section className="lessons-section" id="what-to-learn">
-      <div className="review-wrap lessons-layout">
-        <div><span className="eyebrow">Before choosing a consultant</span><h2>What another customer can learn from this experience</h2></div>
-        <ul>{["Put every payment extension in writing.","Ask what can happen if a payment is delayed.","Request refund and deduction terms before paying.","Confirm who can submit, amend or cancel applications.","Keep every receipt, email and agreement together."].map(item=><li key={item}><Check/>{item}</li>)}</ul>
-      </div>
+    <section className="personal-section evidence-section">
+      <div className="one-page-wrap evidence-box"><FileText/><div><h2>Documents should protect privacy.</h2><p>Only reviewed and redacted records should be public. Passport numbers, Emirates ID details, signatures, bank information and private contact details must remain hidden.</p></div></div>
     </section>
 
-    <section className="share-section">
-      <div className="review-wrap">
-        <div><span className="eyebrow">Have you used this company?</span><h2>Your experience may help someone decide more carefully.</h2><p>Share only what you personally experienced. Every submission is privately reviewed before publication.</p></div>
-        <Link className="button" href="/submit-experience">Share your experience</Link>
+    <section className="personal-section share-form-section" id="share">
+      <div className="one-page-wrap">
+        <div className="simple-section-heading"><span className="eyebrow">Share your experience</span><h2>Did you use the same company?</h2><p>If you are a genuine customer, you can share what happened to you. Your submission stays private until it is reviewed.</p></div>
+        <div className="embedded-form"><SubmissionForm kind="experience" compact/></div>
       </div>
     </section>
   </>;

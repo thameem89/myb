@@ -3,7 +3,7 @@ import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 
 type Kind = "experience" | "response" | "contact";
-export function SubmissionForm({ kind }: { kind: Kind }) {
+export function SubmissionForm({ kind, compact = false }: { kind: Kind; compact?: boolean }) {
   const [result, setResult] = useState<{ok:boolean;reference?:string;error?:string}|null>(null);
   const [pending, setPending] = useState(false);
   async function submit(e: React.FormEvent<HTMLFormElement>) {
@@ -15,6 +15,21 @@ export function SubmissionForm({ kind }: { kind: Kind }) {
     setPending(false); if(response.ok) e.currentTarget.reset();
   }
   if(result?.ok) return <div className="form-card" role="status"><CheckCircle2 size={34}/><h2>Submission received</h2><p>Thank you. Your information is pending moderation and will not be published automatically.</p><p><strong>Reference: {result.reference}</strong></p><button className="button" onClick={()=>setResult(null)}>Make another submission</button></div>;
+  if (compact && kind === "experience") return <form className="form-card" onSubmit={submit} noValidate>
+    <div className="form-grid">
+      <div className="field"><label htmlFor="compact-name">Your name</label><input id="compact-name" name="name" required autoComplete="name"/></div>
+      <div className="field"><label htmlFor="compact-email">Your email</label><input id="compact-email" name="email" type="email" required autoComplete="email"/></div>
+      <div className="field full"><label htmlFor="compact-rating">Your rating</label><select id="compact-rating" name="rating" required><option value="">Choose a rating</option>{[1,2,3,4,5].map(n=><option key={n} value={n}>{n} out of 5</option>)}</select></div>
+      <div className="field full"><label htmlFor="compact-message">What happened?</label><textarea id="compact-message" name="message" minLength={40} placeholder="Share your genuine experience in your own words." required/></div>
+      <input type="hidden" name="title" value="Customer experience submission"/>
+      <input type="hidden" name="service" value="Not specified"/>
+      <input className="honeypot" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"/>
+      <label className="checkbox field full"><input name="accuracy" type="checkbox" required/><span>I confirm this is my genuine experience and is accurate to the best of my knowledge.</span></label>
+      <label className="checkbox field full"><input name="consent" type="checkbox" required/><span>I consent to this information being stored and reviewed before any publication.</span></label>
+      {result?.error&&<p className="field full legal-note" role="alert">{result.error}</p>}
+      <div className="field full"><button className="button" disabled={pending}>{pending?"Submitting…":"Send for private review"}</button></div>
+    </div>
+  </form>;
   const contact = kind === "contact", response = kind === "response";
   return <form className="form-card" onSubmit={submit} noValidate>
     <div className="form-grid">
