@@ -24,22 +24,12 @@ export default function Home() {
     </section>
 
     <section className="personal-hero">
-      <div className="one-page-wrap personal-hero-grid">
+      <div className="one-page-wrap">
         <div>
           <span className="eyebrow">My personal experience</span>
           <h1>My experience with <span className="company-name">Make Your Brand Business Service LLC</span></h1>
           <p className="personal-lead">I started this process hoping to set up my business with confidence. It later became a stressful disagreement about payment timing, communication and what would happen next.</p>
-          <a className="button" href="#my-story">Read what happened</a>
         </div>
-        <aside className="simple-facts" aria-label="Key payment details">
-          <span className="eyebrow">The key numbers</span>
-          <dl>
-            <div><dt>Total discussed</dt><dd>AED 12,000</dd></div>
-            <div><dt>Amount I paid</dt><dd>AED 5,700</dd></div>
-            <div><dt>Balance discussed</dt><dd>AED 6,300</dd></div>
-            <div><dt>Payment period I recall</dt><dd>Two months, verbal</dd></div>
-          </dl>
-        </aside>
       </div>
     </section>
 
